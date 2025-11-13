@@ -1,5 +1,5 @@
 {
-  "name": "donuts-dreamland",
+  "name": "donuts_dreamland_real",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,20 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jackeline-gif/Donuts-Dreamland.git"
+    "url": "git+https://github.com/elair7henrique/Donuts_Dreamland_real.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Jackeline-gif/Donuts-Dreamland/issues"
+    "url": "https://github.com/elair7henrique/Donuts_Dreamland_real/issues"
   },
-  "homepage": "https://github.com/Jackeline-gif/Donuts-Dreamland#readme",
+  "homepage": "https://github.com/elair7henrique/Donuts_Dreamland_real#readme",
   "dependencies": {
-    "body-parser": "^2.2.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "mysql2": "^3.15.3"
+    "pg": "^8.16.3"
   }
 }
