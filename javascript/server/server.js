@@ -17,7 +17,7 @@ app.use(cors({
 app.use(express.json());
 
 // =======================
-// Servir o FRONTEND
+// SERVE O FRONTEND
 // =======================
 app.use(express.static(path.join(__dirname, "../../")));
 
@@ -26,18 +26,18 @@ app.get("/", (req, res) => {
 });
 
 // =======================
-// Banco de Dados
+// BANCO DE DADOS
 // =======================
 const { Pool } = require("pg");
 const bcrypt = require("bcrypt");
 
 const pool = new Pool({
-  user: process.env.DB_USER || "postgres",
-  password: process.env.DB_PASSWORD || "202074",
-  host: process.env.DB_HOST || "localhost",
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_DATABASE || "donuts_db_h1b0",
-  ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : false
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
+  ssl: { rejectUnauthorized: false } // Render usa SSL
 });
 
 // =======================
@@ -61,14 +61,15 @@ app.post("/cadastro", async (req, res) => {
     );
 
     res.json({ mensagem: "Usuário cadastrado com sucesso!" });
+
   } catch (err) {
-    console.error("Erro no banco:", err);
+    console.error("❌ ERRO NO BANCO:", err);
     res.status(500).json({ mensagem: "Erro ao cadastrar usuário." });
   }
 });
 
 // =======================
-// Iniciar servidor
+// INICIAR SERVIDOR
 // =======================
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
