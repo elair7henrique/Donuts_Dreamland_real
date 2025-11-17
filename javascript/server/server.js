@@ -5,6 +5,7 @@ const path = require("path");
 const { Pool } = require("pg");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
+console.log("DATABASE_URL LIDA PELO NODE:", process.env.DATABASE_URL);
 
 const app = express();
 app.use(express.json());
@@ -23,7 +24,6 @@ app.use(
 // ================== CONEXÃO COM PostgreSQL (Render) ==================
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: false  // <<<<<< AQUI ESTÁ O PROBLEMA! Render NÃO usa SSL.
 });
 
 // Teste de conexão
