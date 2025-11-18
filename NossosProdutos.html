@@ -23,25 +23,23 @@
         </ul>
     </nav>
 </header>
-     <!-- Carrinho -->
-     <aside class="carrinho" aria-labelledby="carrinho-title">
-        <h2 id="carrinho-title">
-          <span class="cart-icon small" aria-hidden="true">🛒</span>
-          Seu carrinho
-        </h2>
-  
-        <ul id="lista-carrinho" aria-live="polite"></ul>
-  
-        <p id="total">Total: R$ 0,00</p>
-  
-        <div class="carrinho-actions">
-          <button id="limpar-carrinho" class="btn-secondary">Limpar carrinho</button>
-          <button id="finalizar-compra" class="btn-primary">Finalizar compra</button>
-        </div>
-      </aside>
-  
-    <!-- JS -->
-    <script src="scripts/Carrinho.js" defer></script>
+
+
+<aside class="carrinho" aria-labelledby="carrinho-title">
+    <h2 id="carrinho-title">
+      <span class="cart-icon small" aria-hidden="true">🛒</span>
+      Seu carrinho
+    </h2>
+
+    <ul id="lista-carrinho" aria-live="polite"></ul>
+
+    <p id="total">Total: R$ 0,00</p>
+
+    <div class="carrinho-actions">
+      <button id="limpar-carrinho" class="btn-secondary">Limpar carrinho</button>
+      <button id="finalizar-compra" class="btn-primary">Finalizar compra</button>
+    </div>
+</aside>
 
 <section class="titulo">
     <h1>Nossos Produtos:</h1>
@@ -50,7 +48,7 @@
 <main>
 <section class="produtos">
 
-    <!-- Coluna Tradicional -->
+  
     <div class="coluna">
         <h2>Tradicional</h2>
 
@@ -112,7 +110,7 @@
 
     </div>
 
-    <!-- Coluna Especial -->
+   
     <div class="coluna">
         <h2>Especial</h2>
 
@@ -182,9 +180,11 @@
 </footer>
 
 <script>
-// JS do carrinho
 const listaCarrinho = document.getElementById('lista-carrinho');
 const totalCarrinho = document.getElementById('total');
+const btnLimparCarrinho = document.getElementById('limpar-carrinho');
+const btnFinalizar = document.getElementById('finalizar-compra');
+
 let carrinho = [];
 
 function adicionarItem(nome, preco) {
@@ -218,6 +218,18 @@ function atualizarCarrinho() {
     const total = carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
     totalCarrinho.textContent = `Total: R$ ${total.toFixed(2)}`;
 }
+
+function limparCarrinho() {
+    carrinho = [];
+    atualizarCarrinho();
+}
+
+btnLimparCarrinho.addEventListener("click", limparCarrinho);
+
+btnFinalizar.addEventListener("click", () => {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    window.location.href = "finalizar.html";
+});
 </script>
 
 </body>

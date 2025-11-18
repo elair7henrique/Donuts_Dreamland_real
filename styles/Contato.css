@@ -1,4 +1,3 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -11,9 +10,11 @@ body {
   color: #333;
   text-align: center;
   padding: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Logo flutuante */
 .logo {
   position: fixed;
   top: 20px;
@@ -29,7 +30,6 @@ body {
   box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Cabeçalho */
 header {
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 2px solid #ff77ab;
@@ -41,6 +41,7 @@ nav ul {
   display: flex;
   justify-content: flex-end;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -62,34 +63,29 @@ nav ul li a::after {
   transition: width 0.3s ease;
 }
 
-nav ul li a:hover {
-  color: #ff77ab;
-}
-
 nav ul li a:hover::after {
   width: 100%;
 }
 
-/* Título */
 .titulo {
-  margin: 30px 0;
+  margin: 40px 0;
 }
 
 .titulo h1 {
-  font-size: 2em;
+  font-size: 2.2em;
   color: #fff;
   background-color: #ff77ab;
   display: inline-block;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 25px;
+  border-radius: 12px;
 }
 
 .titulo p {
-  margin-top: 10px;
+  margin-top: 12px;
   color: #fff;
+  font-size: 1.1em;
 }
 
-/* Formulário */
 .contato {
   display: flex;
   justify-content: center;
@@ -107,7 +103,7 @@ form {
 }
 
 .campo {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .campo label {
@@ -115,12 +111,13 @@ form {
   margin-bottom: 5px;
   color: #ff77ab;
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .campo input,
 .campo textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 2px solid #ff77ab;
   border-radius: 8px;
   font-size: 1rem;
@@ -128,11 +125,11 @@ form {
 
 button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background: #ff77ab;
   border: none;
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -142,11 +139,10 @@ button:hover {
   background: #ff4f8a;
 }
 
-/* Informações adicionais */
 .info {
   margin: 40px auto;
   background: #fff;
-  padding: 20px;
+  padding: 22px;
   border-radius: 15px;
   width: 90%;
   max-width: 600px;
@@ -155,14 +151,62 @@ button:hover {
 
 .info h2 {
   color: #ff77ab;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
 }
 
-/* Rodapé */
 footer {
   margin-top: 40px;
   background: #ff77ab;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 18px;
+  font-size: 1rem;
+}
+
+
+/* Smartphones muito pequenos (até 380px) */
+@media (max-width: 380px) {
+  body { padding: 10px; }
+  .logo img { width: 55px; height: 55px; }
+  nav ul { gap: 8px; flex-direction: column; align-items: center; }
+  .titulo h1 { font-size: 1.4em; }
+  form { padding: 18px; }
+  button { font-size: 0.9rem; }
+}
+
+/* Smartphones padrão (381px a 480px) */
+@media (max-width: 480px) {
+  .logo img { width: 60px; height: 60px; }
+  nav ul { flex-direction: column; gap: 10px; align-items: flex-start; }
+  header { padding: 10px 15px; }
+  form { padding: 20px; }
+}
+
+/* Tablets pequenos (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .logo img { width: 70px; height: 70px; }
+  nav ul { gap: 18px; }
+  .titulo h1 { font-size: 1.9em; }
+  form { max-width: 480px; padding: 25px; }
+}
+
+/* Tablets grandes e notebooks pequenos (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo img { width: 75px; height: 75px; }
+  nav ul { gap: 22px; }
+  .titulo h1 { font-size: 2em; }
+  form { max-width: 520px; }
+}
+
+/* Monitores grandes (1025px a 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .titulo h1 { font-size: 2.3em; }
+  form { max-width: 550px; }
+}
+
+/* Monitores muito grandes / Ultrawide */
+@media (min-width: 1441px) {
+  .titulo h1 { font-size: 2.5em; }
+  form { max-width: 600px; }
 }

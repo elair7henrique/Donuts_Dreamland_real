@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finalizar Compra - Donuts Dreamland</title>
+  <link rel="stylesheet" href="styles/finalizar.css">
+</head>
+
+<body>
+  <div class="logo">
+    <img src="./imagem/Logo.png" alt="Logo Donuts Dreamland">
+  </div>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./QuemSomos.html">Quem somos</a></li>
+        <li><a href="./NossosProdutos.html">Nossos Produtos</a></li>
+        <li><a href="./Contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="login-box">
+      <h1>Resumo da sua compra</h1>
+
+      <div id="lista-carrinho"></div>
+
+      <h2 id="total"></h2>
+
+      <button id="limparCarrinho" class="btn-danger">Limpar Carrinho</button>
+      <button id="confirmarCompra" class="btn-success">Confirmar Compra</button>
+
+    </div>
+  </div>
+
+  <script>
+    function carregarCarrinho() {
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      const lista = document.getElementById("lista-carrinho");
+      const totalEl = document.getElementById("total");
+
+      lista.innerHTML = "";
+      let total = 0;
+
+      if (carrinho.length === 0) {
+        lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
+        totalEl.textContent = "";
+        return;
+      }
+
+      carrinho.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("item-carrinho");
+        div.innerHTML = `
+          <p><strong>${item.nome}</strong></p>
+          <p>Quantidade: ${item.quantidade}</p>
+          <p>Preço: R$ ${(item.preco * item.quantidade).toFixed(2)}</p>
+          <hr>
+        `;
+        lista.appendChild(div);
+        total += item.preco * item.quantidade;
+      });
+
+      totalEl.textContent = "Total: R$ " + total.toFixed(2);
+    }
+
+    document.getElementById("limparCarrinho").addEventListener("click", () => {
+      localStorage.removeItem("carrinho");
+      carregarCarrinho();
+      alert("Carrinho limpo!");
+    });
+
+    document.getElementById("confirmarCompra").addEventListener("click", () => {
+      localStorage.removeItem("carrinho");
+      alert("Compra finalizada com sucesso!");
+      window.location.href = "index.html";
+    });
+
+    carregarCarrinho();
+  </script>
+
+</body>
+</html>

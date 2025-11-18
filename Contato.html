@@ -6,13 +6,13 @@
   <title>Contato - Donuts Dreamland</title>
   <link rel="stylesheet" href="./styles/Contato.css">
 </head>
-<body>
-  <!-- Logo redonda flutuante -->
+
+<body  style="background-image: url('imagem/fundodonuts.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+
   <div class="logo">
     <img src="./imagem/Logo.png" alt="Donuts Dreamland">
   </div>
 
-  <!-- Cabeçalho com menu -->
   <header>
     <nav>
       <ul>
@@ -25,16 +25,14 @@
     </nav>
   </header>
 
-  <!-- Título -->
   <section class="titulo">
     <h1>Fale Conosco</h1>
     <p>Entre em contato para encomendas, dúvidas ou sugestões!</p>
   </section>
 
-  <!-- Formulário de contato -->
   <main>
     <section class="contato">
-      <form action="#" method="post">
+      <form id="formContato" action="mailto:seuemail@gmail.com" method="POST" enctype="text/plain">
         <div class="campo">
           <label for="nome">Nome:</label>
           <input type="text" id="nome" name="nome" required>
@@ -55,7 +53,6 @@
     </section>
   </main>
 
-  <!-- Informações adicionais -->
   <section class="info">
     <h2>Outros meios de contato</h2>
     <p>📍 Endereço: Rua dos Donuts, 123 - São Paulo/SP</p>
@@ -63,9 +60,24 @@
     <p>📧 Email: contato@donutsdreamland.com</p>
   </section>
 
-  <!-- Rodapé -->
   <footer>
     <p>© 2025 Donuts Dreamland - Todos os direitos reservados</p>
   </footer>
+
+  <script>
+    const numeroWhatsApp = "5519997374220";
+
+    document.getElementById("formContato").addEventListener("submit", function() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const textoWhatsApp = `Olá, meu nome é ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+      const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${textoWhatsApp}`;
+
+      window.open(urlWhatsApp, "_blank");
+    });
+  </script>
+
 </body>
 </html>

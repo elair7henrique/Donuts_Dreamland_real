@@ -1,23 +1,21 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ======= BODY ======= */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: url('../imagem/donuts.png') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 20px;
 }
 
-/* ======= LOGO ======= */
 .logo {
   position: absolute;
   top: 20px;
@@ -37,7 +35,6 @@ body {
   transform: scale(1.05);
 }
 
-/* ======= CABEÇALHO ======= */
 header {
   position: absolute;
   top: 40px;
@@ -48,6 +45,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -76,15 +74,14 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-/* ======= CONTAINER ======= */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 20px;
 }
 
-/* ======= LOGIN BOX ======= */
 .login-box {
   background: #fff;
   padding: 2.5rem;
@@ -139,4 +136,77 @@ nav a:hover::after {
   box-shadow: 0px 6px 15px #ff77ab;
 }
 
+@media (max-width: 480px) {
+  .logo {
+    top: 10px;
+    left: 10px;
+  }
 
+  header {
+    top: 10px;
+    right: 10px;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .login-box {
+    padding: 1.5rem;
+  }
+
+  .login-box h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-box input {
+    width: 100%;
+  }
+
+  .login-box button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .logo img {
+    width: 100px;
+    height: 100px;
+  }
+
+  header {
+    top: 20px;
+    right: 20px;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+
+  .login-box {
+    max-width: 350px;
+  }
+
+  .login-box h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .login-box {
+    max-width: 380px;
+  }
+
+  nav a {
+    font-size: 17px;
+  }
+}
