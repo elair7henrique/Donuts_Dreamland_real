@@ -2,68 +2,48 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
-const path = require("path");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// ======================
-//  SERVIR SITE PUBLICO
-// ======================
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// ======================
-//  CONEXÃO COM MYSQL
-// ======================
-// ⚠️ COLOQUE AQUI OS DADOS DO MYSQL DA RAILWAY
+// Conexão com MySQL
 const db = mysql.createConnection({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT
+  host: "localhost",
+  user: "root",
+  password: "202074Dl", // sua senha correta aqui
+  database: "donutsdreamland"
 });
 
 db.connect(err => {
-  if (err) return console.error("Erro ao conectar ao MySQL:", err);
-  console.log("Conectado ao MySQL da Railway!");
+  if (err) return console.error("Erro ao conectar:", err);
+  console.log("Conectado ao MySQL!");
 });
 
-// ======================
-//  ROTA DE CADASTRO
-// ======================
+// -------------------------
+// ROTA DE CADASTRO
+// -------------------------
 app.post("/cadastro", async (req, res) => {
   const { email, numero, senha } = req.body;
 
-  try {
-    const hash = await bcrypt.hash(senha, 10);
+  const hash = await bcrypt.hash(senha, 10);
 
-    db.query(
-      "INSERT INTO usuarios (email, numero, senha) VALUES (?, ?, ?)",
-      [email, numero, hash],
-      (err) => {
-        if (err) {
-          return res.status(400).json({
-            mensagem: "Erro: email já existe ou erro no banco."
-          });
-        }
-
-        res.json({ mensagem: "Usuário cadastrado com sucesso!" });
+  db.query(
+    "INSERT INTO usuarios (email, numero, senha) VALUES (?, ?, ?)",
+    [email, numero, hash],
+    (err) => {
+      if (err) {
+        return res.status(400).json({ mensagem: "Erro: email já existe ou erro no banco." });
       }
-    );
-  } catch (error) {
-    res.status(500).json({ mensagem: "Erro no servidor" });
-  }
+
+      res.json({ mensagem: "Usuário cadastrado com sucesso!" });
+    }
+  );
 });
 
-// ======================
-//  ROTA DE LOGIN
-// ======================
+// -------------------------
+// ROTA DE LOGIN
+// -------------------------
 app.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
@@ -87,10 +67,4 @@ app.post("/login", (req, res) => {
   );
 });
 
-// ======================
-//  PORTA RAILWAY
-// ======================
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
-  console.log("Servidor rodando na porta " + PORT)
-);
+app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
