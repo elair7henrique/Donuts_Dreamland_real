@@ -123,6 +123,7 @@ nav a::after {
 
 .texto2, .imagem{
   width: 50%;
+  margin: auto;
   padding: 40px;
   box-sizing: auto;
 }
