@@ -1,36 +1,35 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    }
-    
-    body {
+}
+
+body {
     background-color: #fff4f8;
     color: #333;
-    }
-    
-    header {
+}
+
+header {
     background-color: #ff82a9;
     color: white;
     text-align: center;
     padding: 20px;
     border-bottom: 4px solid #ffb6c1;
-    }
-    
-    .produtos, .carrinho {
+}
+
+.produtos, .carrinho {
     width: 90%;
     max-width: 900px;
     margin: 30px auto;
-    }
-    
-    h2 {
+}
+
+h2 {
     color: #ff4d79;
     margin-bottom: 10px;
-    }
-    
-    .produto {
+}
+
+.produto {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -39,26 +38,26 @@
     margin-bottom: 15px;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    }
-    
-    .produto img {
+}
+
+.produto img {
     width: 80px;
     height: 80px;
     border-radius: 10px;
     object-fit: cover;
-    }
-    
-    .produto-info {
+}
+
+.produto-info {
     flex-grow: 1;
     margin-left: 15px;
-    }
-    
-    .produto-info p {
+}
+
+.produto-info p {
     font-weight: bold;
     color: #555;
-    }
-    
-    button {
+}
+
+button {
     background-color: #ff4d79;
     color: white;
     border: none;
@@ -66,20 +65,20 @@
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
-    }
-    
-    button:hover {
+}
+
+button:hover {
     background-color: #ff1f5c;
-    }
-    
-    .carrinho-lista {
+}
+
+.carrinho-lista {
     background: #ffe3ec;
     padding: 20px;
     border-radius: 10px;
     min-height: 100px;
-    }
-    
-    .item-carrinho {
+}
+
+.item-carrinho {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -87,16 +86,16 @@
     background: white;
     padding: 10px;
     border-radius: 8px;
-    }
-    
-    .total {
+}
+
+.total {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
     text-align: right;
-    }
-    
-    .finalizar {
+}
+
+.finalizar {
     margin-top: 15px;
     width: 100%;
     background-color: #ff4d79;
@@ -107,9 +106,88 @@
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    }
-    
-    .finalizar:hover {
+}
+
+.finalizar:hover {
     background-color: #ff1f5c;
+}
+
+
+
+
+@media (max-width: 900px) {
+    .produto {
+        padding: 12px;
     }
-    
+
+    .produto img {
+        width: 70px;
+        height: 70px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    header {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .produto {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .produto-info {
+        margin-left: 0;
+    }
+
+    .produto img {
+        width: 100px;
+        height: 100px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .item-carrinho {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .total {
+        text-align: center;
+        font-size: 17px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    header {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .produto img {
+        width: 90px;
+        height: 90px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .finalizar {
+        padding: 10px;
+        font-size: 15px;
+    }
+}

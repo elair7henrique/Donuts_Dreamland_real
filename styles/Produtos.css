@@ -1,18 +1,16 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ff77ab; /* Fundo rosa */
+    background-color: #ff77ab;
     color: #333;
     padding: 20px;
 }
 
-/* Logo flutuante */
 .logo {
     position: fixed;
     top: 20px;
@@ -28,12 +26,11 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Menu */
 header {
     background: rgba(255, 255, 255, 0.9);
     border-bottom: 2px solid #ff77ab;
     padding: 10px 30px;
-    margin-left: 120px; /* Espaço para logo */
+    margin-left: 120px;
 }
 
 nav ul {
@@ -48,14 +45,13 @@ nav ul li a {
     color: #ff77ab;
     font-weight: bold;
     padding: 5px 0;
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
     color: #e65c92;
 }
 
-/* Título */
 .titulo h1 {
     font-size: 2em;
     color: #fff;
@@ -67,7 +63,6 @@ nav ul li a:hover {
     text-align: right;
 }
 
-/* Produtos */
 .produtos {
     display: flex;
     justify-content: center;
@@ -92,12 +87,6 @@ nav ul li a:hover {
     color: #ff77ab;
 }
 
-/* Lista de produtos */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
 .produto {
     display: flex;
     justify-content: space-between;
@@ -120,13 +109,6 @@ ul {
     font-size: 16px;
 }
 
-.produto .info p {
-    font-size: 13px;
-    color: #555;
-    margin-top: 3px;
-}
-
-/* Botões */
 .botoes {
     display: flex;
     gap: 5px;
@@ -140,19 +122,18 @@ ul {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s ease;
+    transition: 0.3s;
 }
 
 .botoes button:hover {
     background: #e65c92;
 }
 
-/* Carrinho */
 .carrinho {
     position: fixed;
     top: 80px;
     right: 20px;
-    width: 220px;
+    width: 230px;
     background: #fff;
     padding: 15px;
     border-radius: 10px;
@@ -162,7 +143,6 @@ ul {
 .carrinho h2 {
     color: #ff77ab;
     margin-bottom: 10px;
-
 }
 
 .carrinho ul {
@@ -178,7 +158,44 @@ ul {
     color: #ff77ab;
 }
 
-/* Rodapé */
+.carrinho-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    flex: 1;
+    background-color: #4dff88;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #33cc66;
+}
+
+.btn-secondary {
+    flex: 1;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #e60000;
+}
+
 footer {
     margin-top: 40px;
     background: #ff77ab;
@@ -187,19 +204,92 @@ footer {
     padding: 15px;
 }
 
-/* Responsivo */
-@media (max-width: 900px) {
-    .produtos {
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
     }
 
-    .coluna {
-        width: 90%;
+    .logo img {
+        width: 55px;
+        height: 55px;
     }
 
     header {
         margin-left: 0;
+        padding: 10px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .titulo h1 {
+        width: 100%;
+        font-size: 1.4em;
+        text-align: center;
+    }
+
+    .coluna {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .carrinho {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
     }
 }
 
+@media (min-width: 481px) and (max-width: 768px) {
+    .coluna {
+        width: 80%;
+    }
+
+    .carrinho {
+        width: 260px;
+        right: 10px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .coluna {
+        width: 45%;
+    }
+
+    .carrinho {
+        width: 250px;
+    }
+
+    nav ul li a {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .coluna {
+        width: 40%;
+    }
+
+    .carrinho {
+        width: 250px;
+    }
+}
+
+@media (min-width: 1441px) {
+    .coluna {
+        width: 30%;
+    }
+
+    .carrinho {
+        width: 260px;
+    }
+}

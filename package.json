@@ -2,9 +2,9 @@
   "name": "donuts_dreamland_real",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "javascript/server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node javascript/server/server.js"
   },
   "repository": {
     "type": "git",
